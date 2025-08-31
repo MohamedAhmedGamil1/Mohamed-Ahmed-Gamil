@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* متغيرات CSS لتسهيل التخصيص */
+:root {
+  --bg-color: rgb(10, 58, 69);
+  --card-bg-color: rgb(7, 92, 87);
+  --text-color: #FFFFFF;
+  --muted-text-color: #ffffff;
+  --accent-color: #14B8A6;
+  --accent-hover-color: #0FA192;
+  --highlight-color: #FF7B00;
+  --highlight-hover-color: #E76F00;
+  --border-color: rgb(255, 255, 255);
+}
+
+
+
+/* الأنماط الأساسية لجميع العناصر */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط الرأس (Header) */
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 7%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid transparent;
+    transition: all .3s ease;
+}
+
+/* This new rule will style the container for the mobile icons */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    /* Space between the lang button and menu icon */
+}
+
+.header.sticky {
+    background: rgba(10, 58, 69, 0.703);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.logo:hover {
+    color: var(--accent-color);
+}
+
+.navbar a {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 3.5rem;
+    transition: color .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--accent-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+#lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid var(--border-color);
+    border-radius: .8rem;
+    cursor: pointer;
+    margin-left: 2rem;
+    transition: all .3s ease;
+    height: 3.6rem;
+}
+
+#lang-switcher:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border-color: var(--accent-color);
+}
+
+#lang-switcher i {
+    font-size: 1.8rem;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط الأقسام العامة */
+
+section {
+    padding: 8rem 9% 2rem;
+    min-height: 100vh;
+}
+
+.section-heading {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.2rem;
+    color: var(--accent-color);
+    margin-bottom: 4rem;
+    text-align: center;
+    min-height: 3.5rem;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم الصفحة الرئيسية (Home Section) */
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15rem 9% 5rem;
+}
+
+.home-container {
+    max-width: 80rem;
+}
+
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animated Border for Profile Picture */
+.profile-pic-container::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    background: conic-gradient(from var(--angle), var(--accent-color), #222, #333, var(--accent-color));
+    border-radius: 50%;
+    z-index: -1;
+    animation: spin 4s linear infinite;
+    --angle: 0deg;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin {
+    to {
+        --angle: 360deg;
+    }
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--card-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--muted-text-color);
+    font-size: 1.8rem;
+    overflow: hidden;
+    /* To keep image inside the circle */
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-name {
+    font-weight: 700;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
+    white-space: nowrap;
+    /* Keeps name on one line */
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    /* Responsive font size */
+}
+
+.home-title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--muted-text-color);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 3rem;
+    /* Prevents layout shift */
+}
+
+.home-bio {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    max-width: 70rem;
+    margin: 0 auto 4rem;
+}
+
+/* Typing Animation & Cursor */
+.cursor {
+    display: inline-block;
+    background-color: var(--accent-color);
+    margin-left: 0.1rem;
+    width: 3px;
+    animation: blink 1s infinite;
+}
+
+.cursor.typing {
+    animation: none;
+}
+
+@keyframes blink {
+    0% {
+        background-color: var(--accent-color);
+    }
+
+    49% {
+        background-color: var(--accent-color);
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    99% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: var(--accent-color);
+    }
+}
+
+
+.btn-box {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: .8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--accent-color);
+}
+
+.btn.btn-outline {
+    background: transparent;
+    color: var(--accent-color);
+}
+
+.btn.btn-outline:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.social-links a {
+    font-size: 3rem;
+    color: var(--muted-text-color);
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم عني (About Section) */
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-content {
+    max-width: 80rem;
+    text-align: center;
+}
+
+.about-content h3 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.about-list ul {
+    list-style: none;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.about-list li {
+    font-size: 1.6rem;
+    color: var(--muted-text-color);
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-list li i {
+    font-size: 2.4rem;
+    color: var(--accent-color);
+}
+
+p {
+    font-size: 15px;
+    color: var(--muted-text-color);
+    line-height: 1.8;
+}
+
+.about-image {
+    position: relative;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 90%;
+    border-radius: 50%;
+    border: .2rem solid var(--main-color);
+}
+
+.about-image .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: .2rem solid var(--second-bg-color);
+    border-bottom: .2rem solid var(--second-bg-color);
+    border-right: .2rem solid var(--main-color);
+    border-left: .2rem solid var(--main-color);
+    animation: aboutSpinner 8s linear infinite;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم المهارات (Skills Section) */
+
+/* General Section Container */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 4%;
+}
+
+/* Section Heading */
+.section-heading {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.2rem;
+    color: var(--accent-color);
+    margin-bottom: 4rem;
+    text-align: center;
+    min-height: 3.5rem; /* عشان مفيش اهتزاز في الانيميشن */
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.three-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Card Style */
+.card {
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(10, 58, 69, 0.459);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center; /* مركز العنوان والأيقونة */
+    margin-bottom: 1.5rem;
+}
+
+.card-icon {
+    font-size: 2.4rem;
+    color: var(--accent-color);
+}
+
+.card-header h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Skills Tags */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0;
+}
+
+.skills-tags span {
+    background: rgba(10, 58, 69, 0.459);
+    color: var(--muted-text-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم المشاريع (Projects Section) */
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-box {
+    background: var(--card-bg-color);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-box h4 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.project-box p {
+    font-size: 1.5rem;
+    color: var(--muted-text-color);
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم الشهادات (Certificates Section) */
+
+.certs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certs-box {
+    background: var(--card-bg-color);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certs-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.certs-box h4 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.certs-box p {
+    font-size: 1.5rem;
+    color: var(--muted-text-color);
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم التواصل (Contact Section) */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-box {
+    background: var(--card-bg-color);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.contact-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-box h3 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.contact-box a {
+    font-size: 1.6rem;
+    color: var(--muted-text-color);
+    word-break: break-word;
+    transition: color 0.3s;
+}
+
+.contact-box a:hover {
+    color: var(--text-color);
+}
+
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط التذييل (Footer) */
+
+.footer {
+    padding: 2rem 9% 1rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-text p {
+    font-size: 1.4rem;
+    color: var(--muted-text-color);
+}
+
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط اللغة (RTL - Arabic) */
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .navbar a {
+    margin-left: 0;
+    margin-right: 3.5rem;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط الاستجابة (Media Queries) */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 4%;
+    }
+
+    section {
+        padding: 6rem 4% 2rem;
+    }
+
+    .home-content {
+        order: 2;
+    }
+
+    .home-img {
+        order: 1;
+    }
+
+    .home {
+        flex-direction: column;
+        padding-top: 10rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--card-bg-color);
+        border-bottom: 1px solid var(--border-color);
+        transition: .25s ease;
+        text-align: center;
+    }
+
+    .navbar.active {
+        left: 0;
+    }
+
+    .rtl .navbar {
+        left: auto;
+        right: -100%;
+    }
+
+    .rtl .navbar.active {
+        right: 0;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        text-align: center;
+    }
+
+    .home-img img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+}
