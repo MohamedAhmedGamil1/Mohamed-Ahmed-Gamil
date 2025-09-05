@@ -37,7 +37,7 @@ body {
 
 /* تغليف كل المحتوى داخل wrapper */
 .wrapper {
-    width: 100%;             /* يتناسب مع أي شاشة */
+    width: 90%;             /* يتناسب مع أي شاشة */
     max-width: 1200px;      /* أقصى عرض للكمبيوتر */
     display: flex;
     flex-direction: column;
@@ -78,9 +78,6 @@ img, video {
     }
 }
 
-
-}
-
 /* ---------------------------------------------------------------------------------- */
 /* أنماط الرأس (Header) */
 
@@ -105,9 +102,9 @@ img, video {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    /* Space between the lang button and menu icon */
 }
 
+/* Sticky header */
 .header.sticky {
     background: rgba(10, 58, 69, 0.703);
     backdrop-filter: blur(10px);
@@ -173,38 +170,58 @@ img, video {
 }
 
 /* ---------------------------------------------------------------------------------- */
-/* أنماط الأقسام العامة */
+/* تحسين Header للموبايل */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 5%;
+    }
 
-section {
-    padding: 8rem 9% 2rem;
-    min-height: 100vh;
-}
+    .logo {
+        font-size: 2rem;
+    }
 
-.section-heading {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 3.2rem;
-    color: var(--accent-color);
-    margin-bottom: 4rem;
-    text-align: center;
-    min-height: 3.5rem;
+    .navbar a {
+        font-size: 1.4rem;
+        margin-left: 0;
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    #menu-icon {
+        display: block;
+        align-self: flex-end;
+    }
+
+    .header-icons {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
 }
 
 /* ---------------------------------------------------------------------------------- */
 /* أنماط قسم الصفحة الرئيسية (Home Section) */
-
 .home {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 15rem 9% 5rem;
+    padding: 15rem 5% 5rem; /* يتغير حسب الهيدر */
+    width: 100%;
 }
 
 .home-container {
     max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
+/* صورة البروفايل */
 .profile-pic-container {
     display: flex;
     justify-content: center;
@@ -212,11 +229,8 @@ section {
     position: relative;
     width: 200px;
     height: 200px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-/* Animated Border for Profile Picture */
 .profile-pic-container::before {
     content: '';
     position: absolute;
@@ -251,10 +265,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--muted-text-color);
-    font-size: 1.8rem;
     overflow: hidden;
-    /* To keep image inside the circle */
 }
 
 .profile-pic img {
@@ -263,76 +274,35 @@ section {
     object-fit: cover;
 }
 
+/* الاسم والوظيفة والنص */
 .home-name {
     font-weight: 700;
     color: var(--accent-color);
     text-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
-    white-space: nowrap;
-    /* Keeps name on one line */
     font-size: clamp(1.5rem, 5vw, 3rem);
-    /* Responsive font size */
+    margin-bottom: 1rem;
 }
 
 .home-title {
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
     font-weight: 500;
     color: var(--muted-text-color);
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 3rem;
-    /* Prevents layout shift */
+    margin-bottom: 1.5rem;
 }
 
 .home-bio {
-    font-size: 1.6rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.6rem);
     line-height: 1.7;
     max-width: 70rem;
-    margin: 0 auto 4rem;
+    margin: 0 auto 2.5rem;
 }
 
-/* Typing Animation & Cursor */
-.cursor {
-    display: inline-block;
-    background-color: var(--accent-color);
-    margin-left: 0.1rem;
-    width: 3px;
-    animation: blink 1s infinite;
-}
-
-.cursor.typing {
-    animation: none;
-}
-
-@keyframes blink {
-    0% {
-        background-color: var(--accent-color);
-    }
-
-    49% {
-        background-color: var(--accent-color);
-    }
-
-    50% {
-        background-color: transparent;
-    }
-
-    99% {
-        background-color: transparent;
-    }
-
-    100% {
-        background-color: var(--accent-color);
-    }
-}
-
-
+/* أزرار */
 .btn-box {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .btn {
@@ -362,9 +332,9 @@ section {
 .btn.btn-outline:hover {
     background: var(--accent-color);
     color: var(--bg-color);
-
 }
 
+/* روابط السوشيال */
 .social-links {
     display: flex;
     justify-content: center;
@@ -379,6 +349,90 @@ section {
 
 .social-links a:hover {
     color: var(--accent-color);
+}
+
+/* دعم RTL وLTR */
+.home.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.home.ltr {
+    direction: ltr;
+    text-align: left;
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* Media Queries للصفحة الرئيسية */
+@media (max-width: 991px) {
+    .home {
+        padding: 12rem 4% 4rem;
+    }
+
+    .home-name {
+        font-size: 2.2rem;
+    }
+
+    .home-title {
+        font-size: 1.8rem;
+    }
+
+    .home-bio {
+        font-size: 1.4rem;
+    }
+
+    .profile-pic-container {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column;
+        padding-top: 10rem;
+    }
+
+    .profile-pic-container {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1.5rem;
+    }
+
+    .home-name {
+        font-size: 2rem;
+    }
+
+    .home-title {
+        font-size: 1.6rem;
+    }
+
+    .home-bio {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .home {
+        padding-top: 8rem;
+    }
+
+    .home-name {
+        font-size: 1.8rem;
+    }
+
+    .home-title {
+        font-size: 1.4rem;
+    }
+
+    .home-bio {
+        font-size: 1.2rem;
+    }
+
+    .profile-pic-container {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 
@@ -770,4 +824,5 @@ p {
     html {
         font-size: 50%;
     }
+}
 }
