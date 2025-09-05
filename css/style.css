@@ -13,11 +13,7 @@
   --border-color: rgb(255, 255, 255);
 }
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 07c26cb18f42155aa33e452bb252d48564b59761
 /* الأنماط الأساسية لجميع العناصر */
 * {
     margin: 0;
@@ -38,15 +34,6 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
-<<<<<<< HEAD
-
-    /* لتوسيط المحتوى بالكامل */
-    display: flex;
-    justify-content: center; /* وسط أفقي */
-    align-items: center;     /* وسط عمودي */
-    text-align: center;
-    min-height: 100vh;
-}
 
 /* تغليف كل المحتوى داخل wrapper */
 .wrapper {
@@ -92,10 +79,8 @@ img, video {
 }
 
 
-=======
 }
 
->>>>>>> 07c26cb18f42155aa33e452bb252d48564b59761
 /* ---------------------------------------------------------------------------------- */
 /* أنماط الرأس (Header) */
 
