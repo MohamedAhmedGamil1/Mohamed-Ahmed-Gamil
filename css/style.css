@@ -46,48 +46,13 @@ body {
     text-align: center;
 }
 
-/* مثال للهيدر */
-header {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-}
-
-/* محتوى الصفحة */
-.content {
-    margin-top: 20px;
-}
-
-/* عناصر إضافية */
-img, video {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Media Query للموبايل */
-@media (max-width: 600px) {
-    header {
-        font-size: 1.8rem;
-        padding: 10px;
-    }
-
-    .content {
-        font-size: 1.6rem;
-        margin-top: 10px;
-    }
-}
-
-/* ---------------------------------------------------------------------------------- */
-/* أنماط الرأس (Header) */
-
 /* Header */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 7%;
+    padding: 2% 5%;
     background: var(--bg-color);
     display: flex;
     justify-content: space-between;
@@ -97,22 +62,22 @@ img, video {
     transition: all .3s ease;
 }
 
-/* This new rule will style the container for the mobile icons */
+/* Header icons */
 .header-icons {
     display: flex;
     align-items: center;
     gap: 1.5rem;
 }
 
-/* Sticky header */
 .header.sticky {
-    background: rgba(10, 58, 69, 0.703);
+    background: rgba(10, 58, 69, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Logo */
 .logo {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
     color: var(--text-color);
     font-weight: 700;
     transition: color 0.3s;
@@ -122,11 +87,12 @@ img, video {
     color: var(--accent-color);
 }
 
+/* Navbar links */
 .navbar a {
-    font-size: 1.7rem;
+    font-size: clamp(1.4rem, 1.5vw, 1.7rem);
     font-weight: 500;
     color: var(--text-color);
-    margin-left: 3.5rem;
+    margin-left: 3rem;
     transition: color .3s;
 }
 
@@ -135,20 +101,22 @@ img, video {
     color: var(--accent-color);
 }
 
+/* Menu icon for mobile */
 #menu-icon {
-    font-size: 3.6rem;
+    font-size: clamp(2.5rem, 4vw, 3.6rem);
     color: var(--text-color);
     cursor: pointer;
     display: none;
 }
 
+/* Language switcher */
 #lang-switcher {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     background: transparent;
     color: var(--text-color);
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
     font-weight: 500;
     padding: 0.5rem 0.8rem;
     border: 2px solid var(--border-color);
@@ -169,9 +137,11 @@ img, video {
     font-size: 1.8rem;
 }
 
-/* ---------------------------------------------------------------------------------- */
-/* تحسين Header للموبايل */
-@media (max-width: 768px) {
+/* -------------------------------- */
+/* Media Queries */
+
+/* Mobile */
+@media (max-width: 600px) {
     .header {
         flex-direction: column;
         align-items: flex-start;
@@ -183,10 +153,10 @@ img, video {
     }
 
     .navbar a {
-        font-size: 1.4rem;
-        margin-left: 0;
         display: block;
+        margin-left: 0;
         margin-top: 0.5rem;
+        font-size: 1.4rem;
     }
 
     #menu-icon {
@@ -198,6 +168,225 @@ img, video {
         margin-top: 1rem;
         gap: 1rem;
     }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .header {
+        padding: 1.5rem 5%;
+    }
+    .logo {
+        font-size: 2.2rem;
+    }
+    .navbar a {
+        font-size: 1.6rem;
+        margin-left: 2rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .header {
+        padding: 2rem 7%;
+    }
+    .logo {
+        font-size: 2.5rem;
+    }
+    .navbar a {
+        font-size: 1.7rem;
+        margin-left: 3.5rem;
+    }
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* أنماط قسم الصفحة الرئيسية (Home Section) */
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15rem 9% 5rem;
+}
+
+.home-container {
+    max-width: 80rem;
+}
+
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animated Border for Profile Picture */
+.profile-pic-container::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    background: conic-gradient(from var(--angle), var(--accent-color), #222, #333, var(--accent-color));
+    border-radius: 50%;
+    z-index: -1;
+    animation: spin 4s linear infinite;
+    --angle: 0deg;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin {
+    to {
+        --angle: 360deg;
+    }
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--card-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--muted-text-color);
+    font-size: 1.8rem;
+    overflow: hidden;
+    /* To keep image inside the circle */
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-name {
+    font-weight: 700;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
+    white-space: nowrap;
+    /* Keeps name on one line */
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    /* Responsive font size */
+}
+
+.home-title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--muted-text-color);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 3rem;
+    /* Prevents layout shift */
+}
+
+.home-bio {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    max-width: 70rem;
+    margin: 0 auto 4rem;
+}
+
+/* Typing Animation & Cursor */
+.cursor {
+    display: inline-block;
+    background-color: var(--accent-color);
+    margin-left: 0.1rem;
+    width: 3px;
+    animation: blink 1s infinite;
+}
+
+.cursor.typing {
+    animation: none;
+}
+
+@keyframes blink {
+    0% {
+        background-color: var(--accent-color);
+    }
+
+    49% {
+        background-color: var(--accent-color);
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    99% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: var(--accent-color);
+    }
+}
+
+
+.btn-box {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: .8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--accent-color);
+}
+
+.btn.btn-outline {
+    background: transparent;
+    color: var(--accent-color);
+}
+
+.btn.btn-outline:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.social-links a {
+    font-size: 3rem;
+    color: var(--muted-text-color);
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
 }
 
 
