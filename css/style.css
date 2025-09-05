@@ -13,8 +13,6 @@
   --border-color: rgb(255, 255, 255);
 }
 
-
-
 /* الأنماط الأساسية لجميع العناصر */
 * {
     margin: 0;
@@ -35,7 +33,58 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+
+    /* لتوسيط المحتوى بالكامل */
+    display: flex;
+    justify-content: center; /* وسط أفقي */
+    align-items: center;     /* وسط عمودي */
+    text-align: center;
+    min-height: 100vh;
 }
+
+/* تغليف كل المحتوى داخل wrapper */
+.wrapper {
+    width: 90%;             /* يتناسب مع أي شاشة */
+    max-width: 1200px;      /* أقصى عرض للكمبيوتر */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* مثال للهيدر */
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+/* محتوى الصفحة */
+.content {
+    margin-top: 20px;
+}
+
+/* عناصر إضافية */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Query للموبايل */
+@media (max-width: 600px) {
+    header {
+        font-size: 1.8rem;
+        padding: 10px;
+    }
+
+    .content {
+        font-size: 1.6rem;
+        margin-top: 10px;
+    }
+}
+
 
 /* ---------------------------------------------------------------------------------- */
 /* أنماط الرأس (Header) */
