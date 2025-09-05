@@ -362,6 +362,7 @@ section {
 .btn.btn-outline:hover {
     background: var(--accent-color);
     color: var(--bg-color);
+    
 }
 
 .social-links {
