@@ -34,7 +34,6 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
-    text-align: center;
 
 /* تغليف كل المحتوى داخل wrapper */
 .wrapper {
