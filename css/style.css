@@ -37,7 +37,7 @@ body {
 
 /* تغليف كل المحتوى داخل wrapper */
 .wrapper {
-    width: 90%;             /* يتناسب مع أي شاشة */
+    width: 100%;             /* يتناسب مع أي شاشة */
     max-width: 1200px;      /* أقصى عرض للكمبيوتر */
     display: flex;
     flex-direction: column;
@@ -362,7 +362,7 @@ section {
 .btn.btn-outline:hover {
     background: var(--accent-color);
     color: var(--bg-color);
-    
+
 }
 
 .social-links {
