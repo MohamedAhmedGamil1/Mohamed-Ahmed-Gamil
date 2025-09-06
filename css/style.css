@@ -34,16 +34,18 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    display: flex;              /* نخلي الـ body مرن */
+    justify-content: center;    /* يوسّط أفقي */
+    align-items: center;        /* يوسّط عمودي */
+    min-height: 100vh;          /* ياخد طول الشاشة كله */
+    margin: 0;                  /* يشيل أي مسافات افتراضية */
+}
 
 /* تغليف كل المحتوى داخل wrapper */
 .wrapper {
-    width: 100%;             /* يتناسب مع أي شاشة */
-    max-width: 1200px;      /* أقصى عرض للكمبيوتر */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    width: 100%;            
+    max-width: 1200px;      
+    text-align: center;     /* النصوص في النص */
 }
 
 /* مثال للهيدر */
@@ -781,5 +783,4 @@ p {
     html {
         font-size: 50%;
     }
-}
 }
