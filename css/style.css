@@ -65,18 +65,6 @@ img, video {
     height: auto;
 }
 
-/* Media Query للموبايل */
-@media (max-width: 600px) {
-    header {
-        font-size: 1.8rem;
-        padding: 10px;
-    }
-
-    .content {
-        font-size: 1.6rem;
-        margin-top: 10px;
-    }
-}
 
 /* ---------------------------------------------------------------------------------- */
 /* أنماط الرأس (Header) */
