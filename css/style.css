@@ -34,6 +34,8 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    align-items: center;
+    text-align: center;
 }
 
 /* تغليف كل المحتوى داخل wrapper */
@@ -782,5 +784,4 @@ p {
     html {
         font-size: 50%;
     }
-}
 }
