@@ -34,8 +34,10 @@ html {
 body {
     background: var(--bg-color);
     color: var(--text-color);
-    align-items: center;
-    text-align: center;
+    line-height: 1.6;
+    font-size: 1.6rem;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
 }
 
 /* تغليف كل المحتوى داخل wrapper */
