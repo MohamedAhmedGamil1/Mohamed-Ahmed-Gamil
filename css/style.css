@@ -170,37 +170,6 @@ img, video {
 }
 
 /* ---------------------------------------------------------------------------------- */
-/* تحسين Header للموبايل */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 5%;
-    }
-
-    .logo {
-        font-size: 2rem;
-    }
-
-    .navbar a {
-        font-size: 1.4rem;
-        margin-left: 0;
-        display: block;
-        margin-top: 0.5rem;
-    }
-
-    #menu-icon {
-        display: block;
-        align-self: flex-end;
-    }
-
-    .header-icons {
-        margin-top: 1rem;
-        gap: 1rem;
-    }
-}
-
-/* ---------------------------------------------------------------------------------- */
 /* أنماط قسم الصفحة الرئيسية (Home Section) */
 .home {
     min-height: 100vh;
